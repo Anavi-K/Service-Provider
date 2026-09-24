@@ -8,7 +8,9 @@ function App() {
 
   const getWeather = async () => {
     try {
-      const res = await axios.get(`http://localhost:5000/weather?city=${city}`);
+      const res = await axios.get(
+  `https://service-provider-w.onrender.com/weather?city=${city}`
+);
       setWeather(res.data);
     } catch (err) {
       alert("Could not fetch weather. Make sure the weather API is running.");
@@ -31,8 +33,7 @@ function App() {
         {weather && (
           <div className="result">
             <h2>{weather.city}</h2>
-            <p>{weather.temperature}°C</p>
-            <p className="message">{weather.message}</p>
+            <p>{weather.temp}°C</p>
           </div>
         )}
       </div>
