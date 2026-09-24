@@ -1,0 +1,28 @@
+services:
+  weather-api:
+    build:
+      context: ./weather_api
+    container_name: weather-api
+    ports:
+      - "5000:5000"
+
+  notifier:
+    build:
+      context: ./notifier
+    container_name: notifier
+    ports:
+      - "6000:6000"
+    depends_on:
+      - weather-api
+
+  frontend:
+    build:
+      context: ./frontend
+    container_name: frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - weather-api
+      - notifier
+    extra_hosts:
+      - "host.docker.internal:host-gateway"

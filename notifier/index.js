@@ -14,6 +14,7 @@ app.post("/notify", (req, res) => {
   res.status(200).send("Notification received");
 });
 
-app.listen(6000, () => {
+app.listen(6000, '0.0.0.0', () => {
   console.log("Notifier service running on port 6000");
 });
+
